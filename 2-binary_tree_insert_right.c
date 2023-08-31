@@ -1,19 +1,21 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_insert_left - a func that inserts a node as the left-child
- * @parent: is a pointer to the node to insert the left-child in
- * @value:  is the value to store in the new node
+ * binary_tree_insert_right - func inserts a node as the right-child of another
  *
- * Description - when a parent already has a left-child, the new node must
- *				take its place, and the old left-child must be set as
- *				the left-child of the new node.
+ * @parent: pointer to the node to insert the right-child in
+ * @value: value to be stored in the new node
  *
- * Return: returns a pointer to the created node, or NULL on failure or if
- *			parent is NULL
+ * Description: onesparent already has a right-child, the new node
+ *				must take its place, and the old right-child must
+ *				be set as the right-child of the new node.
+ *
+ * Return: returns a pointer to the created node, or
+ *			NULL on failure or
+ *			if parent is NULL
  */
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
 	binary_tree_t *new;
 
@@ -26,10 +28,10 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 
 	new->n = value;
 	new->parent = parent;
-	new->right = NULL;
-	new->left = parent->left;
-	parent->left = new;
-	if (new->left)
-		new->left->parent = new;
+	new->left = NULL;
+	new->right = parent->right;
+	parent->right = new;
+	if (new->right)
+		new->right->parent = new;
 	return (new);
 }
